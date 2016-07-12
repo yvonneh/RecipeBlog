@@ -1,0 +1,35 @@
+<% include ./partials/header %>
+
+<!--
++ item (title, image, content, date)  , 
+reference: http://semantic-ui.com/views/item.html,  copy new.ejs
+form for delete btn    239 - 3'
+edit btn   
+  -->
+
+<div class="ui main text container segment">
+    <div class="ui huge header"><%= recipe.title %></div>
+    <div class="ui top attached ">
+        <div class="item">
+            <img class="ui centered rounded image" src="<%= recipe.image %>" >
+
+            <div class="content">
+                <span><%= recipe.created.toDateString() %></span>
+            </div>
+
+            <div class="description">
+                <p><%- recipe.body %></p>
+            </div>
+
+            <a class="ui orange basic button" href="/recipes/<%= recipe._id %>/edit">Edit</a>
+
+            <form id="delete" action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST">
+                <button class="ui red basic button">Delete</button>
+            </form>
+        </div>
+    </div>
+    
+</div>
+
+<% include ./partials/footer %>
+
